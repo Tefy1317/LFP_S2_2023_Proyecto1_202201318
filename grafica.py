@@ -16,6 +16,7 @@ class Arbol:
             fontcolor=configuracion["fuente"],
             shape=configuracion["forma"],
         )
+        self.dot.attr(label=configuracion["texto"])
 
     def agregarNodo(self, valor):
         nombre = f"nodo{self.contador}"

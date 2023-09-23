@@ -6,6 +6,7 @@ from grafica import*
 from collections import namedtuple
 import json
 import tkinter as tk
+from os import remove
 
 Token = namedtuple("Token", ["valor", "linea", "columna"])
 
@@ -21,6 +22,8 @@ configuracion = {
     "forma": None,
 }
 errores = [] 
+erroresSinRepetir = []
+estructuraJson = []
 
 def reconocerString(strInicial, digito):
     token = ""
@@ -49,7 +52,10 @@ def reconocerNumero(strInicial, digito):
     return [int(token), digito]
 
 def crearTokens(strInicial):
-    global linea, columna, tokens, errores
+    estructuraJson.clear()
+    erroresSinRepetir.clear()
+    errores.clear()
+    global linea, columna, tokens
     digito = 0 
     contadorErrores = 0 
     while digito <len(strInicial):
@@ -82,19 +88,31 @@ def crearTokens(strInicial):
             tokens.append(token)
         else: 
             contadorErrores +=1
-            error_info = {
-                "No": contadorErrores,
+            print("Caracter no reconocido: ", caracter," en línea: ",linea," columna: ",columna)
+            errorInfo = {
                 "lexema": caracter,
                 "tipo": "error lexico",
-                "linea": linea,
+                "fila": linea,
                 "columna": columna
             }
-            errores.append(error_info)  
+
+            errores.append(errorInfo) 
+
             digito +=1
             columna += 1
-    #print(errores)
-    return errores
 
+    for elemento in errores:
+        if elemento not in erroresSinRepetir:
+            erroresSinRepetir.append(elemento)
+
+    for i, error in enumerate(erroresSinRepetir, start=1):
+        estructuraJson.append({
+            "No": i,
+            "descripcion": error
+    })
+    linea = 1
+    columna = 1
+         
 
 def encontrarInstruction():
     global tokens
@@ -142,23 +160,28 @@ def mostrarInstrucciones():
     return instrucciones
 
 
-def analizar(entrada):
+def analizar(entrada): 
     arbol.dot.clear()
     crearTokens(entrada)
     arbol.agregarConfiguracion(configuracion)
     instrucciones = mostrarInstrucciones()
     for i in instrucciones:
         print("RESULTADO INSTRUCCION: ", i.interpreteExpresiones())
-
     return arbol
 
 def archivoErrores():
+    try:
+        remove("RESULTADOS_202201318.json")
+    except FileNotFoundError:
+        print(" ")
+
     with open("RESULTADOS_202201318.json", "w") as archivo_json:
-        json.dump(errores, archivo_json, indent=4)
+        json.dump(estructuraJson, archivo_json, indent=4)
+    archivo_json.close()
+    
     ventanaNueva = tk.Tk()
     ventanaNueva.title(f"Errores JSON - {'RESULTADOS_202201318.json'}")
     ventanaNueva.geometry("500x500")
-
     ventanaNueva.configure(bg="#ffcccc")
 
     with open("RESULTADOS_202201318.json", "r") as archivo_json:
@@ -177,3 +200,4 @@ def archivoErrores():
     )
     resultado_text.insert("1.0", texto_json)
     resultado_text.pack(fill="both", expand=True)
+

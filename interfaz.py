@@ -103,8 +103,8 @@ class Ventana(tk.Tk):
         self.filemenu = Menu(self.menu)
         self.menu.add_cascade(label="Archivo", menu=self.filemenu)
         self.filemenu.add_command(label="Abrir", command=self.abrirArchivo)
-        self.filemenu.add_command(label="Guardar")
-        self.filemenu.add_command(label="Guardar como", command=self.guardarArchivo)
+        self.filemenu.add_command(label="Guardar", command=self.guardar)
+        self.filemenu.add_command(label="Guardar como", command=self.guardarComo)
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Salir", command=self.quit)
 
@@ -112,13 +112,17 @@ class Ventana(tk.Tk):
         button_frame = tk.Frame(self)
         button_frame.pack(side=tk.TOP, pady=10)
 
-        buttonAnalizar= Button(button_frame, text="Analizar entrada y ver reporte", command=self.analizarTexto, bg="#dee2e6", fg="black", font=("Courier New", 15))
+        buttonAnalizar= Button(button_frame, text="Analizar entrada", command=self.analizarTexto, bg="#dee2e6", fg="black", font=("Courier New", 15))
+        buttonAnalizar.pack(side=tk.LEFT, padx=10)
+
+        buttonAnalizar= Button(button_frame, text="Ver Reporte", command=self.verReporte, bg="#dee2e6", fg="black", font=("Courier New", 15))
         buttonAnalizar.pack(side=tk.LEFT, padx=10)
 
         buttonErrores = Button(button_frame, text="Ver Errores", command=self.cargarJson, bg="#dee2e6", fg="black", font=("Courier New", 15))
         buttonErrores.pack(side=tk.RIGHT, padx=10)
 
     def abrirArchivo(self):
+        global filepath
         filepath = askopenfilename(
             filetypes=[("JSON Files", "*.json"), ("All Files", "*.*")]
         )
@@ -131,7 +135,7 @@ class Ventana(tk.Tk):
             self.scroll.insert(tk.END, text)
         self.title(f"Proyecto 1 - {filepath}")
 
-    def guardarArchivo(self):
+    def guardarComo(self):
         filepath = asksaveasfilename(
             defaultextension="json",
             filetypes=[("JSON Files", "*.json"), ("All Files", "*.*")],
@@ -142,20 +146,33 @@ class Ventana(tk.Tk):
             text = self.scroll.get(1.0, tk.END)
             output_file.write(text)
         self.title(f"Proyecto 1 - {filepath}")
+    
+    def guardar(self):
+        if not filepath:
+            self.guardarComo()
+        else:
+            with open(filepath, "w") as output_file:
+                text = self.scroll.get(1.0, tk.END)
+                output_file.write(text)
+            self.title(f"Proyecto 1 - {filepath}")
 
     def analizarTexto(self):
+        global arbol
         text = self.scroll.get(1.0, tk.END) 
         if text.strip() == "": 
             messagebox.showinfo(message="No hay ningún texto para analizar", title="Error")
         else:
             messagebox.showinfo(message="Archivo analizado con éxito, ver detalles en consola", title="Mensaje")
             arbol = analizar(text)
-            arbol.dot.view()
+            #arbol.dot.view()
+        return arbol 
+    
+    def verReporte(self):
+        arbol.dot.view()
   
     def cargarJson(self):
        archivoErrores()
 
     
-
 app = Ventana()
 app.mainloop()

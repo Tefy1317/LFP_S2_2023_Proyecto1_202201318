@@ -5,12 +5,12 @@
       "valor1": 10,
       "valor2": [
         {
-          "operacion": "division",
-          "valor1": 15,
+          "operacion": "suma",
+          "valor1": 2,
           "valor2": 3
         }
       ]
-    }, ?
+    },
     {
       "operacion": "multiplicacion",
       "valor1": 4,
@@ -26,7 +26,7 @@
       "operacion": "suma",
       "valor1": [{ "operacion": "seno", "valor1": 90 }],
       "valor2": 5.32
-    } &
+    }
   ],
   "configuraciones": [
     {
@@ -34,6 +34,6 @@
       "fondo": "cornflowerblue",
       "fuente": "cyan",
       "forma": "septagon"
-    }%%
+    }
   ]
 }
