@@ -19,9 +19,14 @@ Para el desarrollo del sistema se requieren los siguientes elementos:
 
 ## Arquitectura del programa
 ### Diagrama de clases
-(Imagen diagrama de clases)
+```sh
+![Diagrama de Clases](https://ibb.co/0YgrFDc)
+```
 ### Estructura de archivos
 Los archivos del programa son los siguientes:
+```sh
+![Estructura de archivos](https://ibb.co/jMynWyx)
+```
 ## Tecnologías y herramientas utilizadas
 ### Tecnologías
 * Se utilizó la programación orientada a objetos, utilizando el lenguaje python.
@@ -34,3 +39,4 @@ Los archivos del programa son los siguientes:
 https://github.com/Tefy1317/LFP_S2_2023_Proyecto1_202201318
 
 ## Funcionalidades del programa
+
