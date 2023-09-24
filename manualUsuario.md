@@ -1,10 +1,7 @@
 # Manual de Usuario - Proyecto 1
 Universidad de San Carlos de Guatemala  
-
 Lenguajes Formales y de Programación A+  
-
 Estephanie Alejandra Ruiz Perez  
-
 202201318  
 
 ## Introducción: 
@@ -58,5 +55,5 @@ Al darle clic al botón Ver Errores podrá observar una ventana nueva, donde se 
 ![BotonVerErrores](https://i.ibb.co/fxcNfYv/ver-Errores.jpg)  
 
 Ejemplo de archivo de errores.  
- 
+
 ![EjemploErrores](https://i.ibb.co/jR3MmqK/ejemplo-Errores.jpg)

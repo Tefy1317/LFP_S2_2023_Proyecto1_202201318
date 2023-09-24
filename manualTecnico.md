@@ -1,10 +1,7 @@
 # Manual Técnico - Proyecto 1
 Universidad de San Carlos de Guatemala  
-
 Lenguajes Formales y de Programación A+  
-
 Estephanie Alejandra Ruiz Perez  
-
 202201318  
 
 ## Introducción: 
