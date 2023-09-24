@@ -1,8 +1,12 @@
 # Manual Técnico - Proyecto 1
-Universidad de San Carlos de Guatemala
-Lenguajes Formales y de Programación A+
-Estephanie Alejandra Ruiz Perez
-202201318
+Universidad de San Carlos de Guatemala  
+
+Lenguajes Formales y de Programación A+  
+
+Estephanie Alejandra Ruiz Perez  
+
+202201318  
+
 ## Introducción: 
 El sistema esta diseñado con el objetivo de reconocer un lenguaje por medio de un analizador léxico. Por lo tanto, cuenta con diversas opciones que satisfacen las necesidades básicas para poder leer archivos con formato JSON, identificar errores y ejecutar instrucciones válidas para el lenguaje. Cuenta con una opción donde se pueden abrir y guardar archivos. Además, cuenta con una opción para analizar este archivo cargado. Finalmente, genera reportes que son representados por gráficas según las instrucciones del archivo.
 ## Requisitos del sistema
@@ -43,17 +47,24 @@ Los archivos del programa son los siguientes:
 https://github.com/Tefy1317/LFP_S2_2023_Proyecto1_202201318
 
 ## Funcionalidades del programa
-El programa cuenta con una interfaz programada con ayuda de la librería Tkinter en la que se puede ingresar texto para analizar. 
-![Interfaz](https://i.ibb.co/GR3ckhj/Interfaz.jpg)
+El programa cuenta con una interfaz programada con ayuda de la librería Tkinter en la que se puede ingresar texto para analizar.  
+
+![Interfaz](https://i.ibb.co/GR3ckhj/Interfaz.jpg)  
+
 ![ClaseVentana](https://i.ibb.co/dsN1yY2/clase-Ventana.jpg)
 
-El botón Analizar entrada crear los tokens para analizarlos y dar validaciones de aceptación según el lenguaje establecido. 
-![BotonAnalizar](https://i.ibb.co/Sc3TdDH/analizar-entrada.jpg)
+El botón Analizar entrada crear los tokens para analizarlos y dar validaciones de aceptación según el lenguaje establecido.  
 
-Además, cuenta con el botón Ver Reporte, el cual muestra una gráfica con ayuda de Graphviz.
-![BotonVerReporte](https://i.ibb.co/10J8CrV/ver-Reporte.jpg)
-![Graphviz](https://i.ibb.co/GRsd2Mc/Graphviz.jpg)
+![BotonAnalizar](https://i.ibb.co/Sc3TdDH/analizar-entrada.jpg)  
 
-A través del botón Ver Errores, se genera un archivo Json con los caracteres que no son reconocidos por el sistema. 
-![BotonVerErrores](https://i.ibb.co/fxcNfYv/ver-Errores.jpg)
+Además, cuenta con el botón Ver Reporte, el cual muestra una gráfica con ayuda de Graphviz.  
+
+![BotonVerReporte](https://i.ibb.co/10J8CrV/ver-Reporte.jpg)  
+
+![Graphviz](https://i.ibb.co/GRsd2Mc/Graphviz.jpg)  
+
+A través del botón Ver Errores, se genera un archivo Json con los caracteres que no son reconocidos por el sistema.  
+
+![BotonVerErrores](https://i.ibb.co/fxcNfYv/ver-Errores.jpg)  
+
 ![Errores](https://i.ibb.co/3pzPw1d/Errores-Cod.jpg)
